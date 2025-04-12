@@ -8,16 +8,13 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
-    headers: {
-      'Content-Type': 'application/javascript'
-    }
   },
   plugins: [
     react(),
     mode === 'development' &&
     componentTagger(),
   ].filter(Boolean),
-  base: '/modern-maker-manifest-2/',
+  base: mode === 'production' ? '/modern-maker-manifest-2/' : '/',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
