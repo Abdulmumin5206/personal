@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Code, Cpu, Cog, Bot, Zap, Server, CircuitBoard } from "lucide-react";
+import { ChevronRight, Code, Cpu, Cog, Bot, Zap, Server, CircuitBoard, Wrench } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Home = () => {
