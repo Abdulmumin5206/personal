@@ -83,7 +83,7 @@ const Resume = () => {
                     <span className="font-medium text-gray-800">{skill.name}</span>
                     <span className="text-gray-600">{skill.level}%</span>
                   </div>
-                  <Progress value={skill.level} className="h-2 bg-gray-200" indicatorClassName="bg-teal-custom" />
+                  <Progress value={skill.level} className="h-2 bg-gray-200" />
                 </div>
               ))}
             </div>
