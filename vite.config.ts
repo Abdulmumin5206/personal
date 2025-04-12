@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => ({
     mode === 'development' &&
     componentTagger(),
   ].filter(Boolean),
+  base: '/modern-maker-manifest-2/',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
