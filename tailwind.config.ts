@@ -67,6 +67,9 @@ export default {
 				"blue-deep": "#1a365d",
 				"teal-custom": "#0d9488",
 				"gray-light": "#f8fafc",
+				"dark-bg": "#121212",
+				"dark-card": "#1e1e1e",
+				"dark-border": "#2e2e2e",
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
