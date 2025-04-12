@@ -19,7 +19,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <Router basename="/modern-maker-manifest-2">
+        <Router>
           <Layout>
             <Routes>
               <Route path="/" element={<Home />} />
