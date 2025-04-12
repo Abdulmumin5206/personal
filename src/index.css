@@ -51,13 +51,13 @@
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 173 80% 29%;
     --secondary-foreground: 210 40% 98%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 173 80% 29%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -81,11 +81,11 @@
 
 @layer components {
   .section-title {
-    @apply text-3xl font-bold text-blue-deep mb-6;
+    @apply text-3xl font-bold text-foreground mb-6;
   }
   
   .nav-link {
-    @apply relative px-2 py-1 text-gray-800 hover:text-teal-custom transition-colors duration-200;
+    @apply relative px-2 py-1 text-foreground hover:text-teal-custom transition-colors duration-200;
   }
   
   .nav-link::after {
@@ -98,6 +98,6 @@
   }
   
   .project-card {
-    @apply rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 bg-white;
+    @apply rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 bg-card;
   }
 }
