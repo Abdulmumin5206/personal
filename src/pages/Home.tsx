@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Code, Cpu, Cog, Wrench, Robot, Zap, Server, Circuit } from "lucide-react";
+import { ChevronRight, Code, Cpu, Cog, Bot, Zap, Server, CircuitBoard } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -42,7 +42,7 @@ const Home = () => {
           <Cog className="w-36 h-36 md:w-48 md:h-48 animate-spin" style={{ animationDuration: '20s' }} />
         </div>
         <div className="absolute -bottom-10 -left-10 lg:bottom-20 lg:left-20 text-muted-foreground/10">
-          <Circuit className="w-24 h-24 md:w-36 md:h-36" />
+          <CircuitBoard className="w-24 h-24 md:w-36 md:h-36" />
         </div>
       </section>
       
@@ -60,7 +60,7 @@ const Home = () => {
               description="Designing robust mechanical systems using CAD software and engineering principles."
             />
             <SkillCard 
-              icon={<Circuit />} 
+              icon={<CircuitBoard />} 
               title="Electronics" 
               description="Creating electronic circuits and systems for sensing, control, and automation."
             />
@@ -70,7 +70,7 @@ const Home = () => {
               description="Building applications and scripts to control and monitor mechatronic systems."
             />
             <SkillCard 
-              icon={<Robot />} 
+              icon={<Bot />} 
               title="Robotics" 
               description="Developing robotic systems with focus on kinematics, perception, and control."
             />
