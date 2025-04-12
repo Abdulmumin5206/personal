@@ -1,16 +1,24 @@
-
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Code, Cpu, Cog, Bot, Zap, Server, CircuitBoard, Wrench } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import InteractiveGear from "@/components/InteractiveGear";
+import BackgroundParticles from "@/components/BackgroundParticles";
 
 const Home = () => {
   const [animateHero, setAnimateHero] = useState(false);
+  const [textBrightness, setTextBrightness] = useState(1);
   
   useEffect(() => {
     // Trigger animations after component mounts
     setAnimateHero(true);
   }, []);
+
+  const handleGearRotationSpeedChange = (speed: number) => {
+    // Map rotation speed to brightness (0.5 to 1.5)
+    const brightness = 0.5 + Math.min(Math.abs(speed) / 8, 1);
+    setTextBrightness(brightness);
+  };
 
   return (
     <div className="flex flex-col min-h-screen pt-16">
@@ -27,7 +35,12 @@ const Home = () => {
             
             <h1 
               className={`text-4xl md:text-6xl font-bold tracking-tight text-foreground transition-all duration-1000 transform ${animateHero ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
-              style={{ transitionDelay: '400ms' }}
+              style={{ 
+                transitionDelay: '400ms',
+                filter: `brightness(${textBrightness})`,
+                transition: 'filter 0.3s ease-out',
+                willChange: 'filter'
+              }}
             >
               Blending <span className="text-teal-custom relative">
                 Mechanical
@@ -40,7 +53,12 @@ const Home = () => {
             
             <p 
               className={`text-lg md:text-xl text-muted-foreground max-w-2xl transition-all duration-1000 ${animateHero ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
-              style={{ transitionDelay: '600ms' }}
+              style={{ 
+                transitionDelay: '600ms',
+                filter: `brightness(${textBrightness})`,
+                transition: 'filter 0.3s ease-out',
+                willChange: 'filter'
+              }}
             >
               I design and build intelligent systems that bridge the gap between mechanical 
               engineering, electronics, and software development.
@@ -68,45 +86,34 @@ const Home = () => {
           </div>
         </div>
         
-        {/* Interactive Decorative Elements */}
-        <div className="absolute -top-10 -right-10 lg:top-20 lg:right-20 text-muted-foreground/10 perspective-800">
-          <Cog 
-            className={`w-36 h-36 md:w-48 md:h-48 transition-all duration-1000 ${animateHero ? 'opacity-80 rotate-180' : 'opacity-0 rotate-0'}`} 
-            style={{ animationDuration: '20s' }} 
-          />
-          <div 
-            className={`absolute top-0 left-0 w-full h-full rounded-full border-4 border-teal-custom/10 transition-all duration-2000 ${animateHero ? 'opacity-80 animate-spin-slow' : 'opacity-0'}`}
-            style={{ animationDuration: '25s' }}
-          ></div>
-        </div>
+        {/* Interactive Gear */}
+        <InteractiveGear onRotationSpeedChange={handleGearRotationSpeedChange} />
         
-        <div className="absolute -bottom-10 -left-10 lg:bottom-20 lg:left-20 text-muted-foreground/10">
+        {/* Decorative Elements */}
+        <div className="absolute -bottom-10 -left-10 lg:bottom-20 lg:left-20 text-muted-foreground/50 animate-float-1">
           <CircuitBoard 
-            className={`w-24 h-24 md:w-36 md:h-36 transition-all duration-1000 transform ${animateHero ? 'opacity-80 translate-y-0' : 'opacity-0 translate-y-20'}`}
-            style={{ transitionDelay: '500ms' }} 
+            className={`w-24 h-24 md:w-36 md:h-36 transition-all duration-1000 transform ${
+              animateHero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+            }`}
+            style={{ 
+              transitionDelay: '500ms',
+              transform: 'translateZ(0)',
+              backfaceVisibility: 'hidden'
+            }} 
           />
           <div 
-            className={`absolute -top-5 -left-5 w-10 h-10 rounded-full bg-teal-custom/10 transition-all duration-1000 ${animateHero ? 'opacity-80 animate-pulse-slow' : 'opacity-0'}`}
+            className={`absolute -top-5 -left-5 w-10 h-10 rounded-full bg-teal-custom/50 transition-all duration-1000 ${
+              animateHero ? 'opacity-100 animate-pulse-slow' : 'opacity-0'
+            }`}
+            style={{
+              transform: 'translateZ(0)',
+              backfaceVisibility: 'hidden'
+            }}
           ></div>
         </div>
         
         {/* Background particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(8)].map((_, i) => (
-            <div 
-              key={i}
-              className={`absolute bg-teal-custom/10 rounded-full transition-all duration-2000 ${animateHero ? 'opacity-80' : 'opacity-0'}`}
-              style={{
-                width: `${Math.random() * 50 + 10}px`,
-                height: `${Math.random() * 50 + 10}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                transitionDelay: `${300 + i * 150}ms`,
-                animation: `float-${i % 3} ${Math.random() * 15 + 15}s infinite ease-in-out`
-              }}
-            ></div>
-          ))}
-        </div>
+        <BackgroundParticles />
       </section>
       
       {/* Skills Section with Hover Effects */}
@@ -114,7 +121,8 @@ const Home = () => {
         <div 
           className="absolute inset-0 bg-grid-pattern opacity-5"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            filter: 'none'
           }}
         ></div>
       
@@ -183,10 +191,6 @@ const Home = () => {
             <span className="relative z-10">Get In Touch</span>
             <a href="mailto:your.email@example.com" className="absolute inset-0" aria-label="Get In Touch"></a>
           </Button>
-          
-          {/* Background animation elements */}
-          <div className="absolute top-1/4 right-1/4 w-32 h-32 rounded-full border-2 border-teal-custom/20 animate-pulse-slow opacity-70"></div>
-          <div className="absolute bottom-1/4 left-1/4 w-24 h-24 rounded-full border border-teal-custom/10 animate-spin-slow opacity-50" style={{animationDuration: '15s'}}></div>
         </div>
       </section>
     </div>

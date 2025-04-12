@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Search, Calendar, Clock, ArrowRight } from "lucide-react";
@@ -74,8 +73,8 @@ const Blog = () => {
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="mb-12 text-center">
-            <h1 className="text-4xl font-bold text-blue-deep mb-4">Blog</h1>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+            <h1 className="text-4xl font-bold text-foreground mb-4">Blog</h1>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Thoughts, ideas, and insights on web development, IoT, and technology.
             </p>
           </div>
@@ -83,11 +82,11 @@ const Blog = () => {
           {/* Search and Filters */}
           <div className="mb-12">
             <div className="relative max-w-md mx-auto">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={20} />
               <Input
                 type="text"
                 placeholder="Search articles..."
-                className="pl-10 bg-white"
+                className="pl-10 bg-background"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -96,7 +95,7 @@ const Blog = () => {
             <div className="flex justify-center mt-6 flex-wrap gap-2">
               <button 
                 className={`px-4 py-1 rounded-full text-sm font-medium transition-colors ${
-                  searchQuery === "" ? "bg-blue-deep text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  searchQuery === "" ? "bg-teal-custom text-white" : "bg-secondary/10 text-secondary-foreground hover:bg-secondary/20"
                 }`}
                 onClick={() => setSearchQuery("")}
               >
@@ -106,7 +105,7 @@ const Blog = () => {
                 <button 
                   key={category}
                   className={`px-4 py-1 rounded-full text-sm font-medium transition-colors ${
-                    searchQuery === category ? "bg-teal-custom text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    searchQuery === category ? "bg-teal-custom text-white" : "bg-secondary/10 text-secondary-foreground hover:bg-secondary/20"
                   }`}
                   onClick={() => setSearchQuery(category)}
                 >
@@ -117,12 +116,12 @@ const Blog = () => {
           </div>
           
           {/* Blog Posts */}
-          <div className="space-y-10">
+          <div className="space-y-8">
             {filteredPosts.length > 0 ? (
               filteredPosts.map((post, index) => (
                 <article 
                   key={post.id}
-                  className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 animate-fade-in"
+                  className="bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 animate-fade-in"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="md:flex">
@@ -134,8 +133,8 @@ const Blog = () => {
                       />
                     </div>
                     <div className="p-6 md:w-3/5">
-                      <div className="flex items-center text-sm text-gray-600 mb-3">
-                        <span className="bg-blue-100 text-blue-deep px-3 py-1 rounded-full mr-3">
+                      <div className="flex items-center text-sm text-muted-foreground mb-3">
+                        <span className="bg-secondary/10 text-secondary-foreground px-3 py-1 rounded-full mr-3">
                           {post.category}
                         </span>
                         <div className="flex items-center mr-4">
@@ -147,12 +146,12 @@ const Blog = () => {
                           <span>{post.readTime}</span>
                         </div>
                       </div>
-                      <h2 className="text-2xl font-bold text-blue-deep mb-3">
+                      <h2 className="text-2xl font-bold text-foreground mb-3">
                         <Link to={`/blog/${post.slug}`} className="hover:text-teal-custom transition-colors">
                           {post.title}
                         </Link>
                       </h2>
-                      <p className="text-gray-700 mb-4">
+                      <p className="text-muted-foreground mb-4">
                         {post.excerpt}
                       </p>
                       <Link to={`/blog/${post.slug}`} className="text-teal-custom hover:text-teal-600 font-medium flex items-center">
@@ -164,7 +163,7 @@ const Blog = () => {
               ))
             ) : (
               <div className="text-center py-12">
-                <p className="text-gray-600 text-lg">No articles found matching your search.</p>
+                <p className="text-muted-foreground text-lg">No articles found matching your search.</p>
                 <button 
                   className="mt-4 text-teal-custom hover:text-teal-600 font-medium"
                   onClick={() => setSearchQuery("")}

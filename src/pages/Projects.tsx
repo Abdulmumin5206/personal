@@ -1,4 +1,3 @@
-
 import { ExternalLink, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -70,13 +69,13 @@ const Projects = () => {
     <div className="pt-28 pb-20">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto mb-16 text-center">
-          <h1 className="text-4xl font-bold text-blue-deep mb-4">My Projects</h1>
-          <p className="text-lg text-gray-700">
+          <h1 className="text-4xl font-bold text-foreground mb-4">My Projects</h1>
+          <p className="text-lg text-muted-foreground">
             A collection of projects I've worked on, from web applications to IoT solutions.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <div 
               key={project.id} 
@@ -91,19 +90,19 @@ const Projects = () => {
                 />
               </div>
               <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-semibold text-blue-deep mb-2">{project.title}</h3>
-                <p className="text-gray-700 mb-4 flex-grow">{project.description}</p>
+                <h3 className="text-xl font-semibold text-foreground mb-2">{project.title}</h3>
+                <p className="text-muted-foreground mb-4 flex-grow">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag) => (
                     <span 
                       key={tag} 
-                      className="bg-blue-100 text-blue-deep text-sm px-3 py-1 rounded-full"
+                      className="bg-secondary/10 text-secondary-foreground text-sm px-3 py-1 rounded-full"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <div className="flex space-x-4">
+                <div className="flex justify-between">
                   <a 
                     href={project.liveLink} 
                     target="_blank" 
@@ -116,7 +115,7 @@ const Projects = () => {
                     href={project.githubLink} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-blue-deep hover:text-blue-700 font-medium flex items-center"
+                    className="text-foreground hover:text-teal-custom font-medium flex items-center"
                   >
                     GitHub <Github className="ml-1 h-4 w-4" />
                   </a>
