@@ -1,18 +1,58 @@
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Code, Cpu, Cog, Bot, Zap, Server, CircuitBoard, Wrench } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import InteractiveGear from "@/components/InteractiveGear";
 import BackgroundParticles from "@/components/BackgroundParticles";
 
 const Home = () => {
   const [animateHero, setAnimateHero] = useState(false);
   const [textBrightness, setTextBrightness] = useState(1);
+  const [circuitPosition, setCircuitPosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+  const [rgbColor, setRgbColor] = useState({ r: 13, g: 148, b: 136 });
+  const circuitRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     // Trigger animations after component mounts
     setAnimateHero(true);
   }, []);
+
+  useEffect(() => {
+    let animationFrame: number;
+    let hue = 0;
+
+    const animateRGB = () => {
+      if (isHovering) {
+        // Make the color change faster
+        hue = (hue + 3) % 360;
+        
+        // Use vibrant RGB colors with full range
+        const r = Math.floor(Math.sin(hue * Math.PI / 180) * 127 + 128);
+        const g = Math.floor(Math.sin((hue + 120) * Math.PI / 180) * 127 + 128);
+        const b = Math.floor(Math.sin((hue + 240) * Math.PI / 180) * 127 + 128);
+        
+        setRgbColor({ r, g, b });
+        animationFrame = requestAnimationFrame(animateRGB);
+      }
+    };
+
+    if (isHovering) {
+      animationFrame = requestAnimationFrame(animateRGB);
+      
+      return () => {
+        if (animationFrame) {
+          cancelAnimationFrame(animationFrame);
+        }
+      };
+    }
+
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, [isHovering]);
 
   const handleGearRotationSpeedChange = (speed: number) => {
     // Map rotation speed to brightness (0.5 to 1.5)
@@ -20,8 +60,38 @@ const Home = () => {
     setTextBrightness(brightness);
   };
 
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (circuitRef.current) {
+      const rect = circuitRef.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      // Calculate distance from mouse to circuit center
+      const distance = Math.sqrt(
+        Math.pow(e.clientX - centerX, 2) + 
+        Math.pow(e.clientY - centerY, 2)
+      );
+      
+      // Only respond if mouse is within 200px of the circuit
+      if (distance < 200) {
+        const angle = Math.atan2(e.clientY - centerY, e.clientX - centerX);
+        const maxOffset = 20;
+        const offset = Math.max(0, maxOffset * (1 - distance / 200));
+        
+        setCircuitPosition({
+          x: Math.cos(angle) * offset,
+          y: Math.sin(angle) * offset
+        });
+        setIsHovering(true);
+      } else {
+        setCircuitPosition({ x: 0, y: 0 });
+        setIsHovering(false);
+      }
+    }
+  };
+
   return (
-    <div className="flex flex-col min-h-screen pt-16">
+    <div className="flex flex-col min-h-screen pt-16" onMouseMove={handleMouseMove}>
       {/* Hero Section with Improved Animation */}
       <section className="relative py-20 md:py-32 px-4 overflow-hidden">
         <div className="max-w-4xl mx-auto relative z-10">
@@ -34,20 +104,31 @@ const Home = () => {
             </div>
             
             <h1 
-              className={`text-4xl md:text-6xl font-bold tracking-tight text-foreground transition-all duration-1000 transform ${animateHero ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
+              className={`text-4xl md:text-6xl font-bold tracking-tight transition-all duration-1000 transform ${animateHero ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
               style={{ 
                 transitionDelay: '400ms',
                 filter: `brightness(${textBrightness})`,
-                transition: 'filter 0.3s ease-out',
-                willChange: 'filter'
+                transition: 'filter 0.2s ease-out, color 0.2s ease-out',
+                willChange: 'filter, color',
+                color: `rgb(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b})`
               }}
             >
-              Blending <span className="text-teal-custom relative">
+              Blending <span className="relative">
                 Mechanical
-                <span className="absolute bottom-1 left-0 w-full h-1 bg-teal-custom/50 rounded-full transform scale-x-100 origin-left transition-transform duration-1000"></span>
-              </span> Engineering with <span className="text-teal-custom relative">
+                <span className="absolute bottom-1 left-0 w-full h-1 rounded-full transform scale-x-100 origin-left transition-transform duration-1000"
+                  style={{ 
+                    backgroundColor: `rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, 0.8)`,
+                    transition: 'background-color 0.2s ease-out'
+                  }}
+                ></span>
+              </span> Engineering with <span className="relative">
                 Technology
-                <span className="absolute bottom-1 left-0 w-full h-1 bg-teal-custom/50 rounded-full transform scale-x-100 origin-left transition-transform duration-1000"></span>
+                <span className="absolute bottom-1 left-0 w-full h-1 rounded-full transform scale-x-100 origin-left transition-transform duration-1000"
+                  style={{ 
+                    backgroundColor: `rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, 0.8)`,
+                    transition: 'background-color 0.2s ease-out'
+                  }}
+                ></span>
               </span>
             </h1>
             
@@ -90,26 +171,25 @@ const Home = () => {
         <InteractiveGear onRotationSpeedChange={handleGearRotationSpeedChange} />
         
         {/* Decorative Elements */}
-        <div className="absolute -bottom-10 -left-10 lg:bottom-20 lg:left-20 text-muted-foreground/50 animate-float-1">
+        <div 
+          ref={circuitRef}
+          className="absolute -bottom-10 -left-10 lg:bottom-20 lg:left-20 text-muted-foreground/50 animate-float-1"
+          style={{
+            transform: `translate(${circuitPosition.x}px, ${circuitPosition.y}px)`,
+            transition: 'transform 0.2s ease-out'
+          }}
+        >
           <CircuitBoard 
             className={`w-24 h-24 md:w-36 md:h-36 transition-all duration-1000 transform ${
               animateHero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
-            }`}
+            } ${isHovering ? 'scale-110' : 'scale-100'}`}
             style={{ 
               transitionDelay: '500ms',
               transform: 'translateZ(0)',
-              backfaceVisibility: 'hidden'
+              backfaceVisibility: 'hidden',
+              transition: 'transform 0.3s ease-out'
             }} 
           />
-          <div 
-            className={`absolute -top-5 -left-5 w-10 h-10 rounded-full bg-teal-custom/50 transition-all duration-1000 ${
-              animateHero ? 'opacity-100 animate-pulse-slow' : 'opacity-0'
-            }`}
-            style={{
-              transform: 'translateZ(0)',
-              backfaceVisibility: 'hidden'
-            }}
-          ></div>
         </div>
         
         {/* Background particles */}
