@@ -23,11 +23,12 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_BASE_URL: /modern-maker-manifest-2/
+          NODE_ENV: production
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          publish_branch: gh-pages 
+          publish_branch: gh-pages
+          commit_message: "Deploy: $(date '+%Y-%m-%d %H:%M:%S')" 
