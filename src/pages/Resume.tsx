@@ -19,49 +19,49 @@ const Resume = () => {
   const [cvUrl, setCvUrl] = useState("/Abdulmumin Abdusattorov_Resume (1).pdf");
 
   const skills = [
-    { name: "JavaScript", level: 90 },
-    { name: "React", level: 85 },
-    { name: "TypeScript", level: 80 },
-    { name: "Node.js", level: 75 },
-    { name: "HTML/CSS", level: 90 },
-    { name: "Tailwind CSS", level: 85 },
-    { name: "Git", level: 80 },
-    { name: "UI/UX Design", level: 70 },
+    { name: "CAD Design", level: 90 },
+    { name: "MATLAB", level: 85 },
+    { name: "C/C++", level: 80 },
+    { name: "Python", level: 75 },
+    { name: "ANSYS", level: 90 },
+    { name: "3D Printing", level: 85 },
+    { name: "CNC Machining", level: 80 },
+    { name: "Embedded Systems", level: 85 },
   ];
 
   const experiences = [
     {
-      title: "Senior Frontend Developer",
-      company: "Tech Solutions Inc.",
-      period: "2020 - Present",
-      description: "Lead frontend development for various web applications. Implemented responsive designs, optimized performance, and mentored junior developers."
+      title: "Junior Mechatronics Engineer",
+      company: "ID Partner",
+      period: "09/2023 - 04/2024",
+      description: "Redesigned and developed 0.1 mm air gap rotatable gear mechanics for electromagnetic mechanical switches, achieving a ∼50% cost reduction. Created detailed CAD designs using SolidWorks and Fusion360, prototyped models with 3D printers and CNC machines. Developed a copper conductor calculator with MATLAB simulation and GUI."
     },
     {
-      title: "Web Developer",
-      company: "Digital Agency",
-      period: "2018 - 2020",
-      description: "Developed responsive websites and web applications for clients in various industries. Worked with React, JavaScript, and CSS frameworks."
+      title: "3D Printer R&D intern",
+      company: "TÜBİTAK",
+      period: "06/2022 - 09/2022",
+      description: "Collaborated with PhDs to develop next-gen 3D printers for horizontal printing in molding operations. Performed structural stress and strain analysis using ANSYS. Assisted in designing and implementing control systems for conveyors using Arduino Mega and Raspberry Pi."
     },
     {
-      title: "Junior Developer",
-      company: "Startup Studio",
-      period: "2016 - 2018",
-      description: "Assisted in developing web applications and websites. Worked primarily with HTML, CSS, and JavaScript."
+      title: "Mechanical Engineer intern",
+      company: "Elf Elevator",
+      period: "06/2021 - 08/2021",
+      description: "Created detailed CAD models and 2D engineering drawings for elevator enclosures using SolidWorks. Programmed and integrated the elevator's light unit, developing control circuits and logic for automated operation."
     }
   ];
 
   const education = [
     {
-      degree: "Master of Computer Science",
-      institution: "Tech University",
-      period: "2014 - 2016",
-      description: "Specialized in Web Technologies and Software Engineering."
+      degree: "BS in Mechatronics Engineering",
+      institution: "University of Karabuk",
+      period: "2020 - 2024",
+      description: "GPA: 3.15/4.00"
     },
     {
-      degree: "Bachelor of Science in Computer Science",
-      institution: "State University",
-      period: "2010 - 2014",
-      description: "Graduated with honors. Focused on programming fundamentals and web development."
+      degree: "BS in Electrical and Computer Engineering",
+      institution: "NTUA (Erasmus+)",
+      period: "2022 - 2023",
+      description: "GPA: 3.2/4.00"
     }
   ];
 
