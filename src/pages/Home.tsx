@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import InteractiveGear from "@/components/InteractiveGear";
 import BackgroundParticles from "@/components/BackgroundParticles";
-import CVDownloadPopup from "@/components/CVDownloadPopup";
 
 const Home = () => {
   const [animateHero, setAnimateHero] = useState(false);
@@ -12,7 +11,6 @@ const Home = () => {
   const [circuitPosition, setCircuitPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [rgbColor, setRgbColor] = useState({ r: 13, g: 148, b: 136 });
-  const [isCVPopupOpen, setIsCVPopupOpen] = useState(false);
   const circuitRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
@@ -92,15 +90,6 @@ const Home = () => {
     }
   };
 
-  const handleCVDownload = () => {
-    const link = document.createElement('a');
-    link.href = '/Abdulmumin Abdusattorov_Resume (1).pdf';
-    link.download = 'Abdulmumin_Abdusattorov_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
     <div className="flex flex-col min-h-screen pt-16" onMouseMove={handleMouseMove}>
       {/* Hero Section with Improved Animation */}
@@ -168,20 +157,11 @@ const Home = () => {
                 </Link>
               </Button>
               
-              <Button variant="outline" className="hover:scale-105 transition-all duration-300 relative overflow-hidden group" asChild>
+              <Button className="bg-teal-custom hover:bg-teal-600 hover:scale-105 transition-all duration-300 text-white relative overflow-hidden group" asChild>
                 <Link to="/resume">
                   <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent to-teal-custom/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
                   <span className="relative z-10">My Experience</span>
                 </Link>
-              </Button>
-
-              <Button 
-                variant="outline" 
-                className="hover:scale-105 transition-all duration-300 relative overflow-hidden group"
-                onClick={() => setIsCVPopupOpen(true)}
-              >
-                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent to-teal-custom/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
-                <span className="relative z-10">Download CV</span>
               </Button>
             </div>
           </div>
@@ -293,12 +273,6 @@ const Home = () => {
           </Button>
         </div>
       </section>
-
-      <CVDownloadPopup 
-        isOpen={isCVPopupOpen}
-        onClose={() => setIsCVPopupOpen(false)}
-        onDownload={handleCVDownload}
-      />
     </div>
   );
 };

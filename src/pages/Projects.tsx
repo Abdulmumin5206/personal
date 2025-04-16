@@ -1,17 +1,47 @@
 import { ExternalLink, Github } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { WeatherPopup } from "@/components/WeatherPopup";
+
+type PopupContent = {
+  type: 'text' | 'image' | 'video';
+  value: string;
+  alt?: string;
+};
 
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState<number | null>(null);
+
   const projects = [
     {
       id: 1,
       title: "Weather Station",
       description: "A real-time weather monitoring system built with Arduino and React. The system collects temperature, humidity, and atmospheric pressure data and displays it in a user-friendly dashboard.",
-      image: "https://via.placeholder.com/800x600",
+      image: "/Untitled design.webp",
       tags: ["React", "Arduino", "IoT", "API", "Chart.js"],
       liveLink: "#",
       githubLink: "#",
-      featured: true
+      featured: true,
+      popupContent: [
+        {
+          type: 'text',
+          value: 'Welcome to our Weather Station Project! This project helps us monitor local weather conditions in real-time. The system consists of an Arduino-based weather station that collects data and sends it to our React dashboard.'
+        },
+        {
+          type: 'text',
+          value: 'Key Features:\n- Real-time temperature monitoring\n- Humidity tracking\n- Atmospheric pressure measurements\n- Historical data visualization\n- Mobile-responsive dashboard'
+        },
+        {
+          type: 'image',
+          value: '/Untitled design.webp',
+          alt: 'Weather Station Dashboard'
+        },
+        {
+          type: 'video',
+          value: 'https://www.youtube.com/embed/r2FQAoH0hfQ',
+          alt: 'Weather Station Project Demo'
+        }
+      ] as PopupContent[]
     },
     {
       id: 2,
@@ -82,11 +112,14 @@ const Projects = () => {
               className="project-card animate-fade-in overflow-hidden flex flex-col"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="overflow-hidden">
+              <div 
+                className="overflow-hidden aspect-video cursor-pointer"
+                onClick={() => setSelectedProject(project.id)}
+              >
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-56 object-cover transform hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-contain transform hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 flex flex-col flex-grow">
@@ -103,14 +136,12 @@ const Projects = () => {
                   ))}
                 </div>
                 <div className="flex justify-between">
-                  <a 
-                    href={project.liveLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                  <button 
+                    onClick={() => setSelectedProject(project.id)}
                     className="text-teal-custom hover:text-teal-600 font-medium flex items-center"
                   >
                     Live Demo <ExternalLink className="ml-1 h-4 w-4" />
-                  </a>
+                  </button>
                   <a 
                     href={project.githubLink} 
                     target="_blank" 
@@ -125,6 +156,16 @@ const Projects = () => {
           ))}
         </div>
       </div>
+
+      {selectedProject && (
+        <WeatherPopup
+          isOpen={!!selectedProject}
+          onClose={() => setSelectedProject(null)}
+          title={projects.find(p => p.id === selectedProject)?.title || ''}
+          description={projects.find(p => p.id === selectedProject)?.description || ''}
+          content={projects.find(p => p.id === selectedProject)?.popupContent || []}
+        />
+      )}
     </div>
   );
 };
