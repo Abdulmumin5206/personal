@@ -24,7 +24,6 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
-          VITE_BASE_URL: /modern-maker-manifest-2/
 
       - name: Create .nojekyll
         run: touch ./dist/.nojekyll
