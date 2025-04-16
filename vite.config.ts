@@ -14,6 +14,9 @@ export default defineConfig(({ mode }) => ({
     mode === 'development' && componentTagger(),
   ].filter(Boolean),
 
+  // Set base URL for GitHub Pages
+  base: '/personal/',
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
