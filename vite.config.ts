@@ -14,8 +14,8 @@ export default defineConfig(({ mode }) => ({
     mode === 'development' && componentTagger(),
   ].filter(Boolean),
 
-  // Set base URL for GitHub Pages
-  base: '/personal/',
+  // Remove base URL for Netlify deployment
+  base: '/',
 
   resolve: {
     alias: {
