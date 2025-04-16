@@ -1,4 +1,3 @@
-
 import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -24,7 +23,7 @@ const Footer = () => {
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-teal-custom transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="mailto:your.email@example.com" className="text-foreground hover:text-teal-custom transition-colors">
+              <a href="mailto:abdusattorovme@gmail.com" className="text-foreground hover:text-teal-custom transition-colors">
                 <Mail size={20} />
               </a>
             </div>
@@ -52,7 +51,7 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4">Get in Touch</h3>
             <p className="text-muted-foreground mb-2">Interested in working together?</p>
             <a 
-              href="mailto:your.email@example.com"
+              href="mailto:abdusattorovme@gmail.com"
               className="inline-block bg-teal-custom hover:bg-teal-600 text-white px-4 py-2 rounded transition-colors duration-200"
             >
               Send Message

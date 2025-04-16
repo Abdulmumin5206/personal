@@ -42,56 +42,6 @@ const Projects = () => {
           alt: 'Weather Station Project Demo'
         }
       ] as PopupContent[]
-    },
-    {
-      id: 2,
-      title: "Personal Portfolio",
-      description: "Modern personal portfolio website built with React and Tailwind CSS. Features a responsive design, dark mode, and smooth animations.",
-      image: "https://via.placeholder.com/800x600",
-      tags: ["React", "Tailwind CSS", "TypeScript", "Vite"],
-      liveLink: "#",
-      githubLink: "#",
-      featured: true
-    },
-    {
-      id: 3,
-      title: "Blog Platform",
-      description: "A modern blog platform with a custom CMS for content management. Features user authentication, markdown support, and a responsive design.",
-      image: "https://via.placeholder.com/800x600",
-      tags: ["Next.js", "MongoDB", "Tailwind CSS", "Auth"],
-      liveLink: "#",
-      githubLink: "#",
-      featured: true
-    },
-    {
-      id: 4,
-      title: "Task Manager",
-      description: "A full-featured task management application with user authentication, task categorization, and deadline tracking.",
-      image: "https://via.placeholder.com/800x600",
-      tags: ["React", "Firebase", "Tailwind CSS", "Redux"],
-      liveLink: "#",
-      githubLink: "#",
-      featured: false
-    },
-    {
-      id: 5,
-      title: "E-commerce Store",
-      description: "A complete e-commerce solution with product catalog, cart functionality, and payment processing.",
-      image: "https://via.placeholder.com/800x600",
-      tags: ["React", "Node.js", "MongoDB", "Stripe"],
-      liveLink: "#",
-      githubLink: "#",
-      featured: false
-    },
-    {
-      id: 6,
-      title: "Recipe Finder",
-      description: "A recipe search application that allows users to find recipes based on ingredients they have on hand.",
-      image: "https://via.placeholder.com/800x600",
-      tags: ["React", "API Integration", "CSS Grid"],
-      liveLink: "#",
-      githubLink: "#",
-      featured: false
     }
   ];
 
@@ -101,7 +51,7 @@ const Projects = () => {
         <div className="max-w-3xl mx-auto mb-16 text-center">
           <h1 className="text-4xl font-bold text-foreground mb-4">My Projects</h1>
           <p className="text-lg text-muted-foreground">
-            A collection of projects I've worked on, from web applications to IoT solutions.
+            I'm excited to share my projects with you! Currently, I'm showcasing my Weather Station project, and I'll be adding more amazing projects over time. Stay tuned for updates! 😊
           </p>
         </div>
 
@@ -129,7 +79,7 @@ const Projects = () => {
                   {project.tags.map((tag) => (
                     <span 
                       key={tag} 
-                      className="bg-secondary/10 text-secondary-foreground text-sm px-3 py-1 rounded-full"
+                      className="bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-100 text-sm px-3 py-1 rounded-full"
                     >
                       {tag}
                     </span>

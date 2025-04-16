@@ -16,37 +16,37 @@ import { Label } from "@/components/ui/label";
 const Resume = () => {
   const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false);
   const [downloadReason, setDownloadReason] = useState("");
-  const [cvUrl, setCvUrl] = useState("/Abdulmumin Abdusattorov_Resume (1).pdf");
+  const [cvUrl, setCvUrl] = useState("/Abdulmumin Abdusattorov_Resume.pdf");
 
   const skills = [
-    { name: "CAD Design", level: 90 },
-    { name: "MATLAB", level: 85 },
+    { name: "CAD Design (SolidWorks, Fusion360, AutoCAD)", level: 95 },
+    { name: "3D Printing & CNC", level: 90 },
+    { name: "ANSYS & FEMM", level: 85 },
+    { name: "MATLAB & Simulink", level: 85 },
     { name: "C/C++", level: 80 },
     { name: "Python", level: 75 },
-    { name: "ANSYS", level: 90 },
-    { name: "3D Printing", level: 85 },
-    { name: "CNC Machining", level: 80 },
     { name: "Embedded Systems", level: 85 },
+    { name: "Manufacturing & Prototyping", level: 90 },
   ];
 
   const experiences = [
     {
+      title: "Mechatronics Engineer",
+      company: "CFYI -Fablab",
+      period: "11/2024 - Present",
+      description: "Led prototyping and product development for national engineering competitions, including a weather station project. Developed and maintained comprehensive 2D/3D CAD models and technical documentation using SolidWorks, Fusion 360, and AutoCAD. Collaborated with teams to optimize product designs, achieving 15% cost reduction per prototype. Oversaw fabrication processes and implemented version-controlled design database."
+    },
+    {
       title: "Junior Mechatronics Engineer",
       company: "ID Partner",
       period: "09/2023 - 04/2024",
-      description: "Redesigned and developed 0.1 mm air gap rotatable gear mechanics for electromagnetic mechanical switches, achieving a ∼50% cost reduction. Created detailed CAD designs using SolidWorks and Fusion360, prototyped models with 3D printers and CNC machines. Developed a copper conductor calculator with MATLAB simulation and GUI."
+      description: "Redesigned and developed 0.1 mm air gap rotatable gear mechanics for electromagnetic mechanical switches, achieving ∼50% cost reduction. Created detailed CAD designs, prototyped models with 3D printers and CNC machines. Utilized ANSYS for structural and thermal analysis. Developed a copper conductor calculator with MATLAB simulation and GUI."
     },
     {
       title: "3D Printer R&D intern",
       company: "TÜBİTAK",
       period: "06/2022 - 09/2022",
       description: "Collaborated with PhDs to develop next-gen 3D printers for horizontal printing in molding operations. Performed structural stress and strain analysis using ANSYS. Assisted in designing and implementing control systems for conveyors using Arduino Mega and Raspberry Pi."
-    },
-    {
-      title: "Mechanical Engineer intern",
-      company: "Elf Elevator",
-      period: "06/2021 - 08/2021",
-      description: "Created detailed CAD models and 2D engineering drawings for elevator enclosures using SolidWorks. Programmed and integrated the elevator's light unit, developing control circuits and logic for automated operation."
     }
   ];
 
@@ -62,6 +62,12 @@ const Resume = () => {
       institution: "NTUA (Erasmus+)",
       period: "2022 - 2023",
       description: "GPA: 3.2/4.00"
+    },
+    {
+      degree: "Academic Lyceum",
+      institution: "TDTU Academic Lyceum",
+      period: "2017 - 2019",
+      description: "Tashkent, Uzbekistan"
     }
   ];
 
@@ -76,7 +82,7 @@ const Resume = () => {
     // Create a temporary link element
     const link = document.createElement('a');
     link.href = cvUrl;
-    link.download = 'your-cv.pdf'; // The filename for the downloaded file
+    link.download = 'Abdulmumin Abdusattorov_Resume.pdf'; // The filename for the downloaded file
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -191,7 +197,7 @@ const Resume = () => {
             </div>
           </section>
 
-          {/* Education */}
+          {/* Education Section */}
           <section className="mb-16 animate-fade-in" style={{ animationDelay: "200ms" }}>
             <div className="flex items-center mb-8">
               <GraduationCap className="text-teal-custom mr-3" size={24} />

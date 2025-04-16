@@ -37,7 +37,7 @@ export const WeatherPopup: React.FC<WeatherPopupProps> = ({
             switch (item.type) {
               case 'text':
                 return (
-                  <p key={index} className="text-gray-700 whitespace-pre-line">
+                  <p key={index} className="text-foreground dark:text-foreground whitespace-pre-line">
                     {item.value}
                   </p>
                 );

@@ -269,7 +269,7 @@ const Home = () => {
           <Button className="bg-teal-custom hover:bg-teal-600 text-white relative overflow-hidden group transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(13,148,136,0.5)]">
             <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-teal-custom to-teal-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
             <span className="relative z-10">Get In Touch</span>
-            <a href="mailto:your.email@example.com" className="absolute inset-0" aria-label="Get In Touch"></a>
+            <a href="mailto:abdusattorovme@gmail.com" className="absolute inset-0" aria-label="Get In Touch"></a>
           </Button>
         </div>
       </section>

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -51,7 +50,7 @@ const Navbar = () => {
           ))}
           <ThemeToggle />
           <Button className="bg-teal-custom hover:bg-teal-600 text-white ml-2">
-            <a href="mailto:your.email@example.com">Contact Me</a>
+            <a href="mailto:abdusattorovme@gmail.com">Contact Me</a>
           </Button>
         </div>
 
@@ -84,7 +83,7 @@ const Navbar = () => {
               </Link>
             ))}
             <Button className="bg-teal-custom hover:bg-teal-600 text-white w-full mt-4">
-              <a href="mailto:your.email@example.com">Contact Me</a>
+              <a href="mailto:abdusattorovme@gmail.com">Contact Me</a>
             </Button>
           </div>
         </div>
