@@ -18,6 +18,14 @@ const Projects = () => {
       thumbnail: "/Untitled design.webp",
       tags: ["React", "Arduino", "IoT", "API"],
       featured: true,
+    },
+    {
+      id: "planetary-gearbox",
+      title: "Double 30:1 Planetary Gearbox",
+      description: "A precision-engineered double-stage planetary gearbox with a 30:1 reduction ratio. Designed and manufactured for high torque applications with compact form factor.",
+      thumbnail: "/Portfolio/Planetary Gearbox/IMG_1005.webp",
+      tags: ["CAD Design", "Mechanical Engineering", "Gearbox Design", "Manufacturing"],
+      featured: true,
     }
   ];
 

@@ -65,6 +65,33 @@ const ProjectDetail = () => {
         { src: "/Untitled design.webp", alt: "Weather Station Dashboard" }
       ],
       videoUrl: "https://www.youtube.com/embed/r2FQAoH0hfQ"
+    },
+    "planetary-gearbox": {
+      title: "Double 30:1 Planetary Gearbox",
+      subtitle: "Precision Mechanical Power Transmission",
+      description: "A double-stage planetary gearbox system with a 30:1 reduction ratio, designed for high torque applications. This project demonstrates advanced mechanical design principles, precision manufacturing, and gear train optimization for compact and efficient power transmission.",
+      heroImage: "/Portfolio/Planetary Gearbox/IMG_1005.webp",
+      tags: ["CAD Design", "Mechanical Engineering", "Gearbox Design", "Manufacturing", "Precision Engineering", "3D Printing"],
+      liveLink: "https://youtu.be/VfvSvfboxyE",
+      githubLink: "#",
+      bulletPoints: [
+        "Designed complete double-stage planetary gear system from scratch using CAD software",
+        "Engineered 30:1 reduction ratio for optimal torque multiplication",
+        "Calculated gear ratios, tooth profiles, and load distributions",
+        "Designed sun gears, planet gears, and ring gears with precise tolerances",
+        "Optimized gear mesh for minimal backlash and maximum efficiency",
+        "Created compact housing design for space-efficient installation",
+        "Manufactured components using precision 3D printing and machining",
+        "Assembled and tested gearbox under various load conditions",
+        "Achieved smooth operation with minimal noise and vibration"
+      ],
+      gallery: [
+        { src: "/Portfolio/Planetary Gearbox/IMG_1005.webp", alt: "Planetary Gearbox - Assembled View" },
+        { src: "/Portfolio/Planetary Gearbox/IMG_1006.webp", alt: "Planetary Gearbox - Internal Mechanism" },
+        { src: "/Portfolio/Planetary Gearbox/IMG_1007.webp", alt: "Planetary Gearbox - Gear Detail" },
+        { src: "/Portfolio/Planetary Gearbox/IMG_1014.webp", alt: "Planetary Gearbox - Complete Assembly" }
+      ],
+      videoUrl: "https://www.youtube.com/embed/VfvSvfboxyE"
     }
   };
 
@@ -172,12 +199,12 @@ const ProjectDetail = () => {
                 <div 
                   key={index}
                   onClick={() => openLightbox(image)}
-                  className="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all cursor-pointer group"
+                  className="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all cursor-pointer group aspect-video"
                 >
                   <img 
                     src={image.src} 
                     alt={image.alt}
-                    className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               ))}
