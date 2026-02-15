@@ -92,6 +92,38 @@ const ProjectDetail = () => {
         { src: "/Portfolio/Planetary Gearbox/IMG_1014.webp", alt: "Planetary Gearbox - Complete Assembly" }
       ],
       videoUrl: "https://www.youtube.com/embed/VfvSvfboxyE"
+    },
+    "biped-robot-pcb": {
+      title: "Custom PCB for Biped Robot",
+      subtitle: "From Concept to Walking Machine",
+      description: "What started as an idea to understand walking mechanics turned into a full robotics project involving custom gearbox design, 3D printing, electronics, and PCB fabrication. Instead of expensive actuators, I used NEMA17 stepper motors paired with custom 5:1 planetary gearboxes to create a compact, affordable system capable of handling roughly 1kg loads at the knee and hip joints.",
+      heroImage: "/Portfolio/PCB/1.webp",
+      tags: ["PCB Design", "Robotics", "KiCad", "CNC Machining", "Control Theory", "3D Printing", "Stepper Motors", "Mechanical Design"],
+      liveLink: "#",
+      githubLink: "#",
+      bulletPoints: [
+        "Designed and built custom 5:1 compact planetary gearboxes from scratch to replace expensive actuators",
+        "Each gearbox handles approximately 1kg load at knee and hip joints with NEMA17 stepper motors",
+        "3D printed all critical mechanical parts and tested motion mechanics with jumper cable prototypes",
+        "Designed complete custom PCB in KiCad for motor control and power distribution",
+        "Fabricated PCB using SRM-20 CNC mill with 0.5mm V-bit tool for precise trace cutting",
+        "Overcame multiple fabrication failures to successfully produce working PCB",
+        "Integrated stepper motor drivers, microcontroller, and power management on single board",
+        "Developed control algorithms for coordinated leg movement and balance",
+        "Successfully demonstrated walking motion with custom hardware and control system",
+        "Proved concept viability for low-cost biped robot platform using off-the-shelf components"
+      ],
+      gallery: [
+        { src: "/Portfolio/PCB/1.webp", alt: "Custom PCB - Top View" },
+        { src: "/Portfolio/PCB/2.webp", alt: "Custom PCB - Assembled" },
+        { src: "/Portfolio/PCB/Kicadsch.png", alt: "KiCad Schematic Design" },
+        { src: "/Portfolio/PCB/Kicadtracing.png", alt: "KiCad PCB Layout" },
+        { src: "/Portfolio/PCB/Fusion_Step.png", alt: "CAD Design - Robot Assembly" },
+        { src: "/Portfolio/PCB/Fusion_Step back.png", alt: "CAD Design - Back View" },
+        { src: "/Portfolio/PCB/IMG_1192.webp", alt: "Physical Robot - Front" },
+        { src: "/Portfolio/PCB/IMG_1194.webp", alt: "Physical Robot - Detail" }
+      ],
+      videoUrl: "https://www.youtube.com/embed/gyNPqdhr5Q4"
     }
   };
 
@@ -235,29 +267,29 @@ const ProjectDetail = () => {
         {otherProjects.length > 0 && (
           <div className="max-w-5xl mx-auto mt-16 pt-8 border-t border-border">
             <h2 className="text-2xl font-bold text-foreground mb-6">More Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {otherProjects.map((otherProject) => (
                 <Link
                   key={otherProject.id}
                   to={`/projects/${otherProject.id}`}
                   className="group project-card overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="overflow-hidden aspect-video">
+                  <div className="overflow-hidden aspect-video h-32">
                     <img 
                       src={otherProject.heroImage} 
                       alt={otherProject.title}
                       className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
-                  <div className="p-4">
-                    <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-teal-custom transition-colors">
+                  <div className="p-3">
+                    <h3 className="text-sm font-semibold text-foreground mb-1 group-hover:text-teal-custom transition-colors">
                       {otherProject.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+                    <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
                       {otherProject.description}
                     </p>
-                    <div className="flex items-center text-teal-custom font-medium text-sm">
-                      View Project <ArrowRight className="ml-2 h-4 w-4" />
+                    <div className="flex items-center text-teal-custom font-medium text-xs">
+                      View Project <ArrowRight className="ml-1 h-3 w-3" />
                     </div>
                   </div>
                 </Link>

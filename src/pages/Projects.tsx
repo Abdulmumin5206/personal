@@ -1,5 +1,6 @@
 import { ExternalLink, Github, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import AnimatedThumbnail from "@/components/AnimatedThumbnail";
 
 const Projects = () => {
   const projects = [
@@ -26,6 +27,15 @@ const Projects = () => {
       thumbnail: "/Portfolio/Planetary Gearbox/IMG_1005.webp",
       tags: ["CAD Design", "Mechanical Engineering", "Gearbox Design", "Manufacturing"],
       featured: true,
+    },
+    {
+      id: "biped-robot-pcb",
+      title: "Custom PCB for Biped Robot",
+      description: "Built a proof-of-concept biped robot with custom PCB, 5:1 planetary gearboxes, and NEMA17 stepper motors. Designed the PCB in KiCad and fabricated it using CNC with a 0.5mm V-bit.",
+      thumbnails: ["/Portfolio/PCB/1.webp", "/Portfolio/PCB/2.webp"],
+      tags: ["PCB Design", "Robotics", "KiCad", "CNC"],
+      featured: true,
+      animated: true,
     }
   ];
 
@@ -49,11 +59,19 @@ const Projects = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="overflow-hidden aspect-video">
-                <img 
-                  src={project.thumbnail} 
-                  alt={project.title}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                />
+                {project.animated && project.thumbnails ? (
+                  <AnimatedThumbnail 
+                    images={project.thumbnails}
+                    alt={project.title}
+                    className="w-full h-full"
+                  />
+                ) : (
+                  <img 
+                    src={project.thumbnail} 
+                    alt={project.title}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  />
+                )}
               </div>
               <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-teal-custom transition-colors">

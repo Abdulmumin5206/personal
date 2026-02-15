@@ -40,3 +40,26 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Rotate biped robot images 180 degrees */
+img[src*="/Portfolio/PCB/1.webp"],
+img[src*="/Portfolio/PCB/IMG_1192.webp"],
+img[src*="/Portfolio/PCB/IMG_1194.webp"] {
+  transform: rotate(180deg);
+}
+
+/* Rotate second image 90 degrees to make it vertical */
+img[src*="/Portfolio/PCB/2.webp"] {
+  transform: rotate(90deg);
+}
+
+/* Ensure hover scale still works with rotation */
+.group:hover img[src*="/Portfolio/PCB/1.webp"],
+.group:hover img[src*="/Portfolio/PCB/IMG_1192.webp"],
+.group:hover img[src*="/Portfolio/PCB/IMG_1194.webp"] {
+  transform: rotate(180deg) scale(1.1);
+}
+
+.group:hover img[src*="/Portfolio/PCB/2.webp"] {
+  transform: rotate(90deg) scale(1.1);
+}
