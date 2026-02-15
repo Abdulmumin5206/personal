@@ -5,6 +5,15 @@ import AnimatedThumbnail from "@/components/AnimatedThumbnail";
 const Projects = () => {
   const projects = [
     {
+      id: "biped-robot-pcb",
+      title: "Custom PCB for Biped Robot",
+      description: "Built a proof-of-concept biped robot with custom PCB, 5:1 planetary gearboxes, and NEMA17 stepper motors. Designed the PCB in KiCad and fabricated it using CNC with a 0.5mm V-bit.",
+      thumbnails: ["/Portfolio/PCB/1.webp", "/Portfolio/PCB/2.webp"],
+      tags: ["PCB Design", "Robotics", "KiCad", "CNC"],
+      featured: true,
+      animated: true,
+    },
+    {
       id: "pet2filament",
       title: "PET2Filament Machine",
       description: "A fully functional machine designed from scratch to convert PET plastic bottles into 3D printer filament. Combining mechanical engineering, electronics, and sustainability.",
@@ -27,15 +36,6 @@ const Projects = () => {
       thumbnail: "/Portfolio/Planetary Gearbox/IMG_1005.webp",
       tags: ["CAD Design", "Mechanical Engineering", "Gearbox Design", "Manufacturing"],
       featured: true,
-    },
-    {
-      id: "biped-robot-pcb",
-      title: "Custom PCB for Biped Robot",
-      description: "Built a proof-of-concept biped robot with custom PCB, 5:1 planetary gearboxes, and NEMA17 stepper motors. Designed the PCB in KiCad and fabricated it using CNC with a 0.5mm V-bit.",
-      thumbnails: ["/Portfolio/PCB/1.webp", "/Portfolio/PCB/2.webp"],
-      tags: ["PCB Design", "Robotics", "KiCad", "CNC"],
-      featured: true,
-      animated: true,
     }
   ];
 
